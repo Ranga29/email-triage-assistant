@@ -1,0 +1,32 @@
+body { box-sizing: border-box; font-family: 'Space Grotesk', sans-serif; }
+.email-card { transition: all 0.2s ease; }
+.email-card:hover { transform: translateX(4px); }
+.category-pill { animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.slide-in { animation: slideIn 0.3s ease; }
+
+.priority-urgent { border-left: 4px solid #ef4444; }
+.priority-high { border-left: 4px solid #f59e0b; }
+.priority-normal { border-left: 4px solid #3b82f6; }
+.priority-low { border-left: 4px solid #6b7280; }
+
+input, textarea, button.filter-btn {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  color: #f1f5f9;
+}
+input:focus, textarea:focus { outline: none; border-color: #06b6d4; }
+button#submit-btn {
+  background: linear-gradient(to right, #06b6d4, #4f46e5);
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+button.filter-btn { background-color: #334155; border: 1px solid #475569; color: #cbd5e1; font-size: 0.875rem; font-weight: 500; border-radius: 9999px; cursor:pointer; }
+button.filter-btn:hover { border-color: #64748b; }

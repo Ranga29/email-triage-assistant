@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Triage Assistant</title>
+  <link href="styles.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-full bg-slate-900 text-slate-100 overflow-auto">
+  <div class="app-wrapper w-full h-full min-h-full bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900">
+    <div class="max-w-6xl mx-auto p-6">
+      <!-- Header -->
+      <header class="mb-8">
+        <div class="flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <h1 id="app-title" class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+              Email Triage Assistant
+            </h1>
+            <p id="welcome-message" class="text-slate-400 mt-1">Manage your inbox efficiently with AI-powered triage</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div id="stats-display" class="flex gap-4 text-sm">
+              <span class="px-3 py-1 bg-slate-800 rounded-full">
+                <span class="text-cyan-400" id="total-count">0</span> emails
+              </span>
+              <span class="px-3 py-1 bg-slate-800 rounded-full">
+                <span class="text-amber-400" id="urgent-count">0</span> urgent
+              </span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Email Input Panel -->
+        <div class="lg:col-span-1">
+          <div class="bg-slate-800/50 backdrop-blur rounded-2xl p-6 border border-slate-700">
+            <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">Add Email Thread</h2>
+            <form id="email-form" class="space-y-4">
+              <div>
+                <label for="sender" class="block text-sm text-slate-400 mb-1">From</label>
+                <input type="text" id="sender" placeholder="sender@example.com">
+              </div>
+              <div>
+                <label for="subject" class="block text-sm text-slate-400 mb-1">Subject</label>
+                <input type="text" id="subject" placeholder="Email subject line">
+              </div>
+              <div>
+                <label for="content" class="block text-sm text-slate-400 mb-1">Email Content</label>
+                <textarea id="content" rows="6" placeholder="Paste your email thread here..."></textarea>
+              </div>
+              <div>
+                <label for="thread-count" class="block text-sm text-slate-400 mb-1">Messages in Thread</label>
+                <input type="number" id="thread-count" min="1" value="1">
+              </div>
+              <button type="submit" id="submit-btn">
+                <span id="submit-text">Analyze & Triage</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="mt-6 bg-slate-800/50 backdrop-blur rounded-2xl p-6 border border-slate-700">
+            <h3 class="text-sm font-medium text-slate-400 mb-3">Filter by Category</h3>
+            <div id="category-filters" class="flex flex-wrap gap-2">
+              <button data-filter="all" class="filter-btn">All</button>
+              <button data-filter="urgent" class="filter-btn">🔥 Urgent</button>
+              <button data-filter="action" class="filter-btn">⚡ Action</button>
+              <button data-filter="info" class="filter-btn">📋 Info</button>
+              <button data-filter="archive" class="filter-btn">📁 Archive</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email List Panel -->
+        <div class="lg:col-span-2">
+          <div class="bg-slate-800/50 backdrop-blur rounded-2xl border border-slate-700 overflow-hidden">
+            <div class="p-4 border-b border-slate-700 flex items-center justify-between">
+              <h2 class="font-semibold flex items-center gap-2">Triaged Emails</h2>
+              <button id="clear-all-btn" class="text-sm text-slate-500 hover:text-red-400 transition-colors hidden">Clear All</button>
+            </div>
+            <div id="email-list" class="divide-y divide-slate-700/50 max-h-[600px] overflow-y-auto">
+              <div id="empty-state" class="p-12 text-center">
+                <p class="text-slate-500">No emails triaged yet</p>
+                <p class="text-sm text-slate-600 mt-1">Add an email thread to get started</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
